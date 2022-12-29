@@ -1,0 +1,33 @@
+*,
+*::after,
+*::before {
+    /* universal selector*/
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+    @include respond(tab-land-1100){
+        font-size: 50%;
+    }
+}
+
+body {
+    box-sizing: border-box;
+
+    font-family: $font-family-main, $font-family-default;
+    font-weight: 400;
+    color: $grey-dark-2;
+    line-height: 1.6;
+    background-image: linear-gradient(to right bottom, $primary-light, $primary-dark);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+::selection {
+    background-color: $primary;
+    color: $color-white;
+}

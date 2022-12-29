@@ -1,0 +1,109 @@
+.side-nav {
+    font-size: 1.4rem;
+    list-style: none;
+    margin-top: 3.5rem;
+    padding: 0;
+    z-index: 2;
+
+    @include respond(tab-port) {
+        display: flex;
+        margin: 0;
+    }
+
+    &__item {
+        position: relative;
+
+        &:not(:last-child) {
+            margin-bottom: .5rem;
+
+            @include respond(tab-port) {
+                margin-bottom: 0;
+            }
+        }
+
+        // &:last-child {
+
+
+        //     @include respond(tab-port) {
+        //         margin-bottom: .5rem;
+        //     }
+        // }
+        @include respond(tab-port) {
+            flex: 1;
+        }
+
+
+    }
+
+    &__item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 3px;
+        height: 100%;
+        background-color: $primary;
+        transform: scaleY(0);
+        transition: transform 0.2s,
+            width .3s cubic-bezier(1, 0, 0, 1) 0.2s,
+            background-color .3s;
+        z-index: -1;
+
+    }
+
+    &__item:hover::before,
+    &__item--active::before {
+        transform: scaleY(1);
+        width: 100%;
+    }
+
+    &__item:active::before {
+        filter: brightness(90%);
+        // background-color: $primary-light;
+    }
+
+
+    &__link:link,
+    &__link:visited {
+        color: $grey-light-1;
+        text-decoration: none;
+        text-transform: uppercase;
+        display: block;
+        padding: 1.5rem 3rem;
+        display: flex;
+        align-items: center;
+
+        @include respond(tab-port) {
+            justify-content: center;
+            padding: 2rem;
+        }
+        @include respond(phone){
+            flex-direction: column;
+            padding: 1.5rem .5rem;  
+        }
+    }
+
+    &__icon {
+        @include widthHeight;
+        margin-right: 1rem;
+        fill: currentColor;
+        @include respond(phone){
+            margin-right: 0;
+            margin-bottom:.7rem ;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+}
+
+.legal {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 2.5rem;
+    color: $grey-light-4;
+
+    @include respond(tab-port) {
+        display: none;
+    }
+}
